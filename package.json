@@ -1,5 +1,5 @@
 {
-  "name": "mindar-compiler",
+  "name": "@hansip87/mindar-compiler",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -28,5 +28,8 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
