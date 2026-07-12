@@ -2,7 +2,7 @@ import { OfflineCompiler } from "./image-target/offline-compiler.js";
 import { loadImage, createCanvas ,Image, Canvas } from "canvas";
 import { promises as fs } from "fs";
 import path from "path";
-import { CompileResult } from "./entities/target-manifest.js";
+import { TargetManifest } from "./entities/target-manifest.js";
 
 export class MindCompiler {
 
@@ -33,13 +33,11 @@ export class MindCompiler {
         return canvas;
     }
 
-    private compileManifest(imagePaths: string[]): CompileResult {
-        return {
-            targets: imagePaths.map((imagePath, index) => ({
+    private compileManifest(imagePaths: string[]): TargetManifest[] {
+        return imagePaths.map((imagePath, index) => ({
                 targetIndex: index,
                 filename: path.basename(imagePath),
-            }))
-        };
+            }));
     }
 
     async compile(imagePaths: string[],maxImageSize: number = 1080): Promise<Uint8Array> {
