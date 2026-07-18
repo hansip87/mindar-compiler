@@ -126,7 +126,11 @@ const _extractMatchingFeatures = async (imageList, doneCallback) => {
     // TODO: can improve performance greatly if reuse the same detector. just need to handle resizing the kernel outputs
     const detector = new Detector(image.width, image.height);
 
-    if (typeof window !== "undefined") await tf.nextFrame();
+    if (typeof window !== "undefined") {
+      await tf.nextFrame();
+    } else {
+      await new Promise(resolve => setImmediate(resolve));
+    }
     tf.tidy(() => {
       //const inputT = tf.tensor(image.data, [image.data.length]).reshape([image.height, image.width]);
       const inputT = tf.tensor(image.data, [image.data.length], 'float32').reshape([image.height, image.width]);
