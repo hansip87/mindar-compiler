@@ -21,6 +21,11 @@ This project adds:
 - GitHub Packages publishing
 
 ### How to Use
+- Add .npmrc
+    ```
+    @hansip87:registry=https://npm.pkg.github.com
+    //npm.pkg.github.com/:_authToken=ghp_your_pat_token
+    ```
 - Add to package.json dependency
     ```
     "dependencies": {...
@@ -28,7 +33,7 @@ This project adds:
     }
     ```
 - Add to your background worker 
-```
+    ```
     import { MindCompiler } from "@hansip87/mindar-compiler";
     const compiler = new MindCompiler();
 
@@ -38,5 +43,5 @@ This project adds:
         manifestFilePath,   //string absolute path of json file for front end setup
         1280                //maximum width of file input.
     );
-```
+    ```
 
